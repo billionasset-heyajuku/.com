@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ヘヤ宿 | 賃貸物件専門の不動産仲介</title>
+<meta name="google-site-verification" content="nG3J8tBpY8DxxB2zydQF3uH03DRSUDTauMMLSSdDiIY" />
+
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --navy: #0d1b2a; --navy-mid: #162436; --gold: #c8a96e;
+  --gold-light: #e2c99a; --cream: #f5f1eb; --white: #ffffff;
+  --gray: #8a8f96; --light: #ede9e2;
+}
+html { scroll-behavior: smooth; }
+body { font-family: 'DM Sans', sans-serif; background: var(--cream); color: var(--navy); overflow-x: hidden; }
+
+/* NAV */
+nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+  display: flex; justify-content: space-between; align-items: center;
+  padding: 1.2rem 3rem;
+  background: rgba(13,27,42,0.96); backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(200,169,110,0.15);
+}
+.nav-logo { font-family: 'Shippori Mincho', serif; font-size: 1.1rem; color: var(--gold); letter-spacing: 0.18em; }
+.nav-links { display: flex; gap: 2rem; }
+.nav-links a { color: rgba(255,255,255,0.6); text-decoration: none; font-size: 0.8rem; letter-spacing: 0.08em; transition: color 0.2s; }
+.nav-links a:hover { color: var(--gold); }
+.nav-cta { background: var(--gold); color: var(--navy); padding: 0.55rem 1.4rem; font-size: 0.78rem; font-weight: 500; text-decoration: none; letter-spacing: 0.05em; transition: background 0.2s; }
+.nav-cta:hover { background: var(--gold-light); }
+
+/* HERO */
+.hero { min-height: 100vh; background: var(--navy); display: grid; grid-template-columns: 1fr 1fr; position: relative; overflow: hidden; }
+.hero-left { display: flex; flex-direction: column; justify-content: center; padding: 9rem 4rem 4rem 5rem; position: relative; z-index: 1; }
+.hero-right { position: relative; overflow: hidden; }
+.hero-right-bg { position: absolute; inset: 0; background: linear-gradient(135deg, #162436 0%, #0d1b2a 50%, #1a2e42 100%); }
+.hero-grid-pattern {
+  position: absolute; inset: 0;
+  background-image: linear-gradient(rgba(200,169,110,0.06) 1px, transparent 1px), linear-gradient(90deg, rgba(200,169,110,0.06) 1px, transparent 1px);
+  background-size: 48px 48px;
+}
+.hero-orb { position: absolute; width: 420px; height: 420px; border-radius: 50%; background: radial-gradient(circle, rgba(200,169,110,0.12) 0%, transparent 70%); top: 50%; left: 50%; transform: translate(-50%,-50%); }
+.hero-stats { position: absolute; display: flex; flex-direction: column; gap: 1px; bottom: 3rem; right: 3rem; }
+.hero-stat { background: rgba(255,255,255,0.04); border: 1px solid rgba(200,169,110,0.18); padding: 1.2rem 1.6rem; text-align: right; }
+.hero-stat-num { font-family: 'Shippori Mincho', serif; font-size: 1.9rem; color: var(--gold); display: block; }
+.hero-stat-label { font-size: 0.68rem; color: rgba(255,255,255,0.4); letter-spacing: 0.12em; display: block; margin-top: 0.15rem; }
+
+.hero-eyebrow { font-size: 0.68rem; letter-spacing: 0.28em; color: var(--gold); margin-bottom: 1.8rem; opacity: 0; animation: fadeUp 0.7s 0.3s forwards; }
+.hero-title { font-family: 'Shippori Mincho', serif; font-size: clamp(2rem, 3.5vw, 3.2rem); color: var(--white); line-height: 1.45; margin-bottom: 1.6rem; opacity: 0; animation: fadeUp 0.7s 0.5s forwards; }
+.hero-title em { color: var(--gold); font-style: normal; }
+.hero-sub { font-size: 0.9rem; color: rgba(255,255,255,0.55); line-height: 1.9; margin-bottom: 2.5rem; opacity: 0; animation: fadeUp 0.7s 0.7s forwards; }
+.hero-btns { display: flex; gap: 0.8rem; flex-wrap: wrap; opacity: 0; animation: fadeUp 0.7s 0.9s forwards; }
+.btn-gold { display: inline-flex; align-items: center; gap: 0.5rem; background: var(--gold); color: var(--navy); padding: 0.9rem 2rem; font-size: 0.85rem; font-weight: 500; text-decoration: none; letter-spacing: 0.04em; transition: all 0.22s; }
+.btn-gold:hover { background: var(--gold-light); transform: translateY(-2px); }
+.btn-outline { display: inline-flex; align-items: center; gap: 0.5rem; border: 1px solid rgba(200,169,110,0.35); color: var(--gold); padding: 0.9rem 2rem; font-size: 0.85rem; text-decoration: none; letter-spacing: 0.04em; transition: all 0.22s; }
+.btn-outline:hover { background: rgba(200,169,110,0.08); transform: translateY(-2px); }
+
+/* BADGES */
+.badges { background: var(--light); padding: 1.2rem 3rem; display: flex; justify-content: center; gap: 3rem; flex-wrap: wrap; border-bottom: 1px solid rgba(13,27,42,0.08); }
+.badge { display: flex; align-items: center; gap: 0.6rem; font-size: 0.8rem; color: var(--navy); letter-spacing: 0.05em; }
+.badge-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--gold); flex-shrink: 0; }
+
+/* SECTION */
+.section { padding: 6rem 5rem; }
+.section-eyebrow { font-size: 0.68rem; letter-spacing: 0.28em; color: var(--gold); display: block; margin-bottom: 0.8rem; }
+.section-title { font-family: 'Shippori Mincho', serif; font-size: clamp(1.6rem, 2.5vw, 2.2rem); color: var(--navy); line-height: 1.4; }
+.section-title.light { color: var(--white); }
+
+/* FEATURES */
+.features { background: var(--cream); }
+.features-header { margin-bottom: 3.5rem; }
+.features-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1px; background: rgba(13,27,42,0.08); border: 1px solid rgba(13,27,42,0.08); }
+.feature-card { background: var(--cream); padding: 2.5rem 2rem; transition: background 0.22s; }
+.feature-card:hover { background: var(--white); }
+.feature-num { font-family: 'Shippori Mincho', serif; font-size: 2.5rem; color: rgba(200,169,110,0.25); margin-bottom: 1rem; display: block; }
+.feature-title { font-family: 'Shippori Mincho', serif; font-size: 1.05rem; color: var(--navy); margin-bottom: 0.8rem; }
+.feature-desc { font-size: 0.83rem; color: var(--gray); line-height: 1.85; }
+
+/* FLOW */
+.flow { background: var(--navy); }
+.flow-header { margin-bottom: 3.5rem; }
+.flow-steps { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); }
+.flow-step { padding: 2rem 1.8rem; border-right: 1px solid rgba(200,169,110,0.12); position: relative; }
+.flow-step:last-child { border-right: none; }
+.flow-step-num { font-family: 'Shippori Mincho', serif; font-size: 2.8rem; color: rgba(200,169,110,0.18); margin-bottom: 0.8rem; display: block; line-height: 1; }
+.flow-step-title { font-size: 0.95rem; font-weight: 500; color: var(--gold); margin-bottom: 0.6rem; }
+.flow-step-desc { font-size: 0.8rem; color: rgba(255,255,255,0.45); line-height: 1.8; }
+
+/* VOICES */
+.voices { background: var(--light); }
+.voices-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 1.5rem; margin-top: 3rem; }
+.voice-card { background: var(--white); border: 1px solid rgba(13,27,42,0.07); padding: 2rem; }
+.voice-tag { display: inline-block; font-size: 0.68rem; letter-spacing: 0.1em; background: rgba(200,169,110,0.12); color: #8a6a30; padding: 0.3rem 0.8rem; margin-bottom: 1rem; }
+.voice-text { font-size: 0.88rem; color: var(--navy); line-height: 1.85; margin-bottom: 1rem; font-style: italic; }
+.voice-name { font-size: 0.75rem; color: var(--gray); }
+
+/* CONTACT */
+.contact { background: var(--navy); text-align: center; }
+.contact-title { font-family: 'Shippori Mincho', serif; font-size: clamp(1.6rem, 2.5vw, 2.4rem); color: var(--white); margin-bottom: 0.8rem; }
+.contact-sub { font-size: 0.88rem; color: rgba(255,255,255,0.5); line-height: 1.9; margin-bottom: 3rem; }
+.contact-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1px; background: rgba(200,169,110,0.12); border: 1px solid rgba(200,169,110,0.12); max-width: 760px; margin: 0 auto 2rem; }
+.contact-option { background: var(--navy-mid); padding: 2.2rem 1.5rem; text-decoration: none; color: var(--white); transition: background 0.22s; display: flex; flex-direction: column; align-items: center; gap: 0.6rem; }
+.contact-option:hover { background: rgba(200,169,110,0.08); }
+.contact-icon { font-size: 1.6rem; }
+.contact-method { font-size: 0.7rem; letter-spacing: 0.15em; color: var(--gold); }
+.contact-value { font-family: 'Shippori Mincho', serif; font-size: 1rem; color: var(--white); }
+.contact-note { font-size: 0.72rem; color: rgba(255,255,255,0.3); }
+.line-btn { display: inline-flex; align-items: center; gap: 0.7rem; background: #06C755; color: white; padding: 1rem 2.8rem; font-size: 0.9rem; font-weight: 500; text-decoration: none; letter-spacing: 0.05em; transition: all 0.22s; }
+.line-btn:hover { background: #05b04c; transform: translateY(-2px); }
+
+/* FOOTER */
+footer { background: #080f17; padding: 2rem 5rem; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; border-top: 1px solid rgba(200,169,110,0.1); }
+.footer-logo { font-family: 'Shippori Mincho', serif; color: var(--gold); font-size: 1rem; letter-spacing: 0.18em; }
+.footer-info { font-size: 0.75rem; color: rgba(255,255,255,0.25); line-height: 1.7; text-align: right; }
+
+@keyframes fadeUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+
+@media (max-width: 860px) {
+  nav { padding: 1rem 1.5rem; }
+  .nav-links { display: none; }
+  .hero { grid-template-columns: 1fr; min-height: auto; }
+  .hero-left { padding: 7rem 1.8rem 3rem; }
+  .hero-right { min-height: 220px; }
+  .hero-stats { flex-direction: row; bottom: 1rem; right: 1rem; gap: 1px; }
+  .hero-stat { padding: 0.8rem 1rem; }
+  .hero-stat-num { font-size: 1.2rem; }
+  .section { padding: 4rem 1.8rem; }
+  .flow-steps { grid-template-columns: 1fr; }
+  .flow-step { border-right: none; border-bottom: 1px solid rgba(200,169,110,0.12); }
+  .flow-step:last-child { border-bottom: none; }
+  footer { padding: 1.8rem; flex-direction: column; text-align: center; }
+  .footer-info { text-align: center; }
+  .badges { padding: 1rem 1.5rem; gap: 1.2rem; }
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-logo">ヘヤ宿 <span style="font-size:0.7rem; opacity:0.6; letter-spacing:0.1em;">ビリオンアセット株式会社</span></div>
+  <div class="nav-links">
+    <a href="#features">選ばれる理由</a>
+    <a href="#flow">ご利用の流れ</a>
+    <a href="#voices">お客様の声</a>
+    <a href="#contact">お問い合わせ</a>
+  </div>
+  <a href="https://forms.gle/fopQ7yjWidgjcZJL8" target="_blank" class="nav-cta">無料相談 →</a>
+</nav>
+
+<section class="hero">
+  <div class="hero-left">
+    <p class="hero-eyebrow">RENTAL REAL ESTATE · TOKYO &amp; BEYOND</p>
+    <h1 class="hero-title">
+      「迷っている」<br>「初めてで不安」<br>
+      そんな方こそ、<br><em>ご相談ください。</em>
+    </h1>
+    <p class="hero-sub">
+      お客様一人ひとりに寄り添い、<br>
+      理想のお部屋探しをトータルサポート。<br>
+      未公開物件も多数ご用意しています。
+    </p>
+    <div class="hero-btns">
+      <a href="https://forms.gle/fopQ7yjWidgjcZJL8" target="_blank" class="btn-gold">無料で相談する →</a>
+      <a href="#features" class="btn-outline">詳しく見る</a>
+    </div>
+  </div>
+  <div class="hero-right">
+    <div class="hero-right-bg"></div>
+    <div class="hero-grid-pattern"></div>
+    <div class="hero-orb"></div>
+    <div class="hero-stats">
+      <div class="hero-stat">
+        <span class="hero-stat-num">未公開</span>
+        <span class="hero-stat-label">EXCLUSIVE LISTINGS</span>
+      </div>
+      <a href="https://line.me/ti/p/~219ifqyq" target="_blank" class="hero-stat" style="text-decoration:none; cursor:pointer;">
+        <span class="hero-stat-num">LINE</span>
+        <span class="hero-stat-label">ONLINE SUPPORT OK</span>
+      </a>
+      <div class="hero-stat">
+        <span class="hero-stat-num">1都3県</span>
+        <span class="hero-stat-label">SERVICE AREA</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="badges">
+  <div class="badge"><span class="badge-dot"></span>未公開物件多数</div>
+  <a href="https://line.me/ti/p/~219ifqyq" target="_blank" style="display:flex; align-items:center; gap:0.6rem; font-size:0.8rem; color:var(--navy); letter-spacing:0.05em; text-decoration:none;">
+    <span class="badge-dot"></span>LINE・オンライン相談OK
+  </a>
+  <div class="badge"><span class="badge-dot"></span>しつこい営業なし</div>
+  <div class="badge"><span class="badge-dot"></span>初めての方も安心</div>
+  <div class="badge"><span class="badge-dot"></span>来店不要で完結</div>
+</div>
+
+<section class="section features" id="features">
+  <div class="features-header">
+    <span class="section-eyebrow">WHY CHOOSE US</span>
+    <h2 class="section-title">選ばれる6つの理由</h2>
+  </div>
+  <div class="features-grid">
+    <div class="feature-card">
+      <span class="feature-num">01</span>
+      <h3 class="feature-title">未公開物件を多数ご用意</h3>
+      <p class="feature-desc">大手ポータルサイトには掲載されていない未公開物件を豊富にご用意。他では見つからなかった理想のお部屋に出会えます。</p>
+    </div>
+    <div class="feature-card">
+      <span class="feature-num">02</span>
+      <h3 class="feature-title">一人ひとりに寄り添う対応</h3>
+      <p class="feature-desc">「どこに住もうか迷っている」「初めてで何もわからない」そんな方も大歓迎。丁寧なヒアリングであなたにぴったりの物件をご提案します。</p>
+    </div>
+    <div class="feature-card">
+      <span class="feature-num">03</span>
+      <h3 class="feature-title">LINE・オンライン完結</h3>
+      <p class="feature-desc">来店不要でお部屋探しが完結します。LINEでのチャット相談、オンライン内見にも完全対応。忙しい方にも最適です。</p>
+    </div>
+    <div class="feature-card">
+      <span class="feature-num">04</span>
+      <h3 class="feature-title">しつこい営業は一切なし</h3>
+      <p class="feature-desc">「どんな物件があるか見たいだけ」でも大歓迎。お客様のペースに合わせてご案内します。無理な押し売りは絶対にしません。</p>
+    </div>
+    <div class="feature-card">
+      <span class="feature-num">05</span>
+      <h3 class="feature-title">審査が不安な方もご相談ください</h3>
+      <p class="feature-desc">「過去に審査が通らなかった」「収入に自信がない」そんな方も諦めないでください。お客様の状況に合わせた物件・保証会社をご提案し、入居審査を全力でサポートします。</p>
+    </div>
+    <div class="feature-card">
+      <span class="feature-num">06</span>
+      <h3 class="feature-title">外国人の方も幅広く対応</h3>
+      <p class="feature-desc">日本に来たばかりで不安な外国人の方も安心してご相談ください。様々な国籍・状況のお客様に対応した物件・保証会社をご紹介し、日本での新生活を全力でサポートします。</p>
+    </div>
+  </div>
+</section>
+
+<section class="section flow" id="flow">
+  <div class="flow-header">
+    <span class="section-eyebrow">HOW IT WORKS</span>
+    <h2 class="section-title light">ご利用の流れ</h2>
+  </div>
+  <div class="flow-steps">
+    <div class="flow-step">
+      <span class="flow-step-num">01</span>
+      <p class="flow-step-title">お問い合わせ</p>
+      <p class="flow-step-desc">LINE・電話・メールどこからでもOK。まずはお気軽にご連絡ください。</p>
+    </div>
+    <div class="flow-step">
+      <span class="flow-step-num">02</span>
+      <p class="flow-step-title">ヒアリング</p>
+      <p class="flow-step-desc">ご希望・ご予算・ライフスタイルを丁寧にお伺いします。</p>
+    </div>
+    <div class="flow-step">
+      <span class="flow-step-num">03</span>
+      <p class="flow-step-title">物件のご提案</p>
+      <p class="flow-step-desc">未公開物件を含む、あなたに最適な物件をご紹介します。</p>
+    </div>
+    <div class="flow-step">
+      <span class="flow-step-num">04</span>
+      <p class="flow-step-title">内見・契約</p>
+      <p class="flow-step-desc">オンライン内見にも対応。契約まで丁寧にサポートします。</p>
+    </div>
+    <div class="flow-step">
+      <span class="flow-step-num">05</span>
+      <p class="flow-step-title">アフターフォロー</p>
+      <p class="flow-step-desc">契約してそれっきりにはしません。入居後のお困りごとやご相談も、長いお付き合いとしてしっかりサポートします。</p>
+    </div>
+  </div>
+</section>
+
+<section class="section voices" id="voices">
+  <span class="section-eyebrow">CUSTOMER VOICES</span>
+  <h2 class="section-title">お客様の声</h2>
+  <div class="voices-grid">
+    <div class="voice-card">
+      <span class="voice-tag">20代・一人暮らし</span>
+      <p class="voice-text">「初めての一人暮らしで不安でしたが、LINEで気軽に相談できて助かりました。未公開物件を紹介してもらい、理想の部屋が見つかりました。」</p>
+      <p class="voice-name">東京都在住 / Aさん</p>
+    </div>
+    <div class="voice-card">
+      <span class="voice-tag">30代・カップル</span>
+      <p class="voice-text">「忙しくて来店できなかったのですが、オンラインで全て完結できました。しつこい営業もなく、自分たちのペースで探せました。」</p>
+      <p class="voice-name">神奈川県在住 / Bさん</p>
+    </div>
+    <div class="voice-card">
+      <span class="voice-tag">40代・ファミリー</span>
+      <p class="voice-text">「子どもの学区や周辺環境まで細かく教えてもらえて、安心して決めることができました。丁寧な対応が印象的でした。」</p>
+      <p class="voice-name">埼玉県在住 / Cさん</p>
+    </div>
+    <div class="voice-card">
+      <span class="voice-tag">20代・女性</span>
+      <p class="voice-text">「過去に審査で苦労した経験があり不安でしたが、状況に合った物件と保証会社を提案してもらい、無事審査を通過できました。本当によかったです。」</p>
+      <p class="voice-name">東京都在住 / Dさん</p>
+    </div>
+    <div class="voice-card">
+      <span class="voice-tag">50代・中国出身</span>
+      <p class="voice-text">「日本に来たばかりで、理想のお部屋が見つかるか不安でした。でもスタッフの方が親身になって条件に合うお部屋を見つけてくれて、安心して新生活をスタートできました。」</p>
+      <p class="voice-name">東京都在住 / Rさん</p>
+    </div>
+  </div>
+</section>
+
+<section class="section contact" id="contact">
+  <h2 class="contact-title">まずはお気軽にご相談ください</h2>
+  <p class="contact-sub">
+    しつこい営業は一切ありません。<br>
+    「どんな物件があるか見たいだけ」でも大歓迎です。
+  </p>
+  <div class="contact-grid">
+    <a href="tel:03-6427-6018" class="contact-option">
+      <span class="contact-icon">📞</span>
+      <span class="contact-method">PHONE</span>
+      <span class="contact-value">03-6427-6018</span>
+      <span class="contact-note">毎日 10:00〜20:00</span>
+    </a>
+    <a href="mailto:info@heyajuku.com" class="contact-option">
+      <span class="contact-icon">✉️</span>
+      <span class="contact-method">EMAIL</span>
+      <span class="contact-value">info@heyajuku.com</span>
+      <span class="contact-note">24時間受付</span>
+    </a>
+    <a href="https://forms.gle/fopQ7yjWidgjcZJL8" target="_blank" class="contact-option">
+      <span class="contact-icon">💻</span>
+      <span class="contact-method">ONLINE</span>
+      <span class="contact-value">オンライン相談</span>
+      <span class="contact-note">フォームから予約</span>
+    </a>
+  </div>
+  <div style="display:flex; gap:1rem; justify-content:center; flex-wrap:wrap;">
+    <a href="https://line.me/ti/p/~219ifqyq" target="_blank" class="line-btn">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="white"><path d="M19.365 9.863c.349 0 .63.285.63.631 0 .345-.281.63-.63.63H17.61v1.125h1.755c.349 0 .63.283.63.63 0 .344-.281.629-.63.629h-2.386c-.345 0-.627-.285-.627-.629V8.108c0-.345.282-.63.627-.63h2.386c.349 0 .63.285.63.63 0 .349-.281.63-.63.63H17.61v1.125h1.755zm-3.855 3.016c0 .27-.174.51-.432.596-.064.021-.133.031-.199.031-.211 0-.391-.09-.51-.25l-2.443-3.317v2.94c0 .344-.279.629-.631.629-.346 0-.626-.285-.626-.629V8.108c0-.27.173-.51.43-.595.06-.023.136-.033.194-.033.195 0 .375.104.495.254l2.462 3.33V8.108c0-.345.282-.63.63-.63.345 0 .63.285.63.63v4.771zm-5.741 0c0 .344-.282.629-.631.629-.345 0-.627-.285-.627-.629V8.108c0-.345.282-.63.627-.63.349 0 .631.285.631.63v4.771zm-2.466.629H4.917c-.345 0-.63-.285-.63-.629V8.108c0-.345.285-.63.63-.63.348 0 .63.285.63.63v4.141h1.756c.348 0 .629.283.629.63 0 .344-.281.629-.629.629M24 10.314C24 4.943 18.615.572 12 .572S0 4.943 0 10.314c0 4.811 4.27 8.842 10.035 9.608.391.082.923.258 1.058.59.12.301.079.766.038 1.08l-.164 1.02c-.045.301-.24 1.186 1.049.645 1.291-.539 6.916-4.078 9.436-6.975C23.176 14.393 24 12.458 24 10.314"/></svg>
+      LINEで相談する（無料）
+    </a>
+    <a href="weixin://dl/chat?soriyagi32" style="display:inline-flex; align-items:center; gap:0.7rem; background:#07C160; color:white; padding:1rem 2.8rem; font-size:0.9rem; font-weight:500; text-decoration:none; letter-spacing:0.05em; transition:all 0.22s;">
+      💬 WeChatで相談する
+    </a>
+  </div>
+  <div style="display:flex; gap:1rem; justify-content:center; margin-top:1rem; flex-wrap:wrap;">
+    <a href="https://www.tiktok.com/@billionasset" target="_blank" style="display:inline-flex; align-items:center; gap:0.5rem; border:1px solid rgba(200,169,110,0.3); color:var(--gold); padding:0.7rem 1.5rem; font-size:0.82rem; text-decoration:none; letter-spacing:0.05em; transition:all 0.2s;">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-2.88 2.5 2.89 2.89 0 01-2.89-2.89 2.89 2.89 0 012.89-2.89c.28 0 .54.04.79.1V9.01a6.33 6.33 0 00-.79-.05 6.34 6.34 0 00-6.34 6.34 6.34 6.34 0 006.34 6.34 6.34 6.34 0 006.33-6.34V8.69a8.18 8.18 0 004.78 1.52V6.76a4.85 4.85 0 01-1.01-.07z"/></svg>
+      TikTok: @billionasset
+    </a>
+    <a href="https://www.instagram.com/billionasset.heyajuku" target="_blank" style="display:inline-flex; align-items:center; gap:0.5rem; border:1px solid rgba(200,169,110,0.3); color:var(--gold); padding:0.7rem 1.5rem; font-size:0.82rem; text-decoration:none; letter-spacing:0.05em; transition:all 0.2s;">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
+      Instagram: @billionasset.heyajuku
+    </a>
+    <a href="weixin://dl/chat?soriyagi32" class="contact-option" style="text-decoration:none;">
+      <span class="contact-icon">💬</span>
+      <span class="contact-method">WECHAT</span>
+      <span class="contact-value">soriyagi32</span>
+      <span class="contact-note">WeChatで相談</span>
+    </a>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-logo">ビリオンアセット株式会社</div>
+  <div class="footer-info">
+    〒160-0023 東京都新宿区西新宿7-5-11 ENTERPRISE.1 1階<br>
+    TEL: 03-6427-6018 ｜ FAX: 03-6427-6019 ｜ info@heyajuku.com<br>
+    宅地建物取引業 東京都知事（3）第96322号<br>
+    （社）全日本不動産協会 会員 ｜ （社）不動産保証協会 会員<br>
+    © 2025 ビリオンアセット株式会社 (ヘヤ宿) All rights reserved.
+  </div>
+</footer>
+
+</body>
+</html>
