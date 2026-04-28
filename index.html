@@ -310,16 +310,48 @@ footer { background: #080f17; padding: 2rem 5rem; display: flex; justify-content
     <h2 style="font-family:'Shippori Mincho',serif; font-size:clamp(1.6rem,3vw,2.4rem); color:var(--white); text-align:center; margin-bottom:0.8rem;">SNS をフォローする</h2>
     <p style="text-align:center; color:rgba(255,255,255,0.5); font-size:0.88rem; margin-bottom:3rem; letter-spacing:0.04em;">最新物件情報・お役立ち情報を毎日発信中</p>
 
-    <!-- Elfsight TikTok Feed -->
-    <script src="https://elfsightcdn.com/platform.js" async></script>
-    <div class="elfsight-app-e1dbaa7e-7019-462a-8ed1-54d120bf0172" data-elfsight-app-lazy></div>
-
-    <div style="text-align:center; margin-top:2rem;">
-      <a href="https://www.tiktok.com/@billionasset" target="_blank" style="display:inline-flex; align-items:center; gap:0.6rem; border:1px solid rgba(200,169,110,0.4); color:var(--gold); padding:0.8rem 2rem; font-size:0.82rem; text-decoration:none; letter-spacing:0.08em; transition:all 0.2s;">
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-2.88 2.5 2.89 2.89 0 01-2.89-2.89 2.89 2.89 0 012.89-2.89c.28 0 .54.04.79.1V9.01a6.33 6.33 0 00-.79-.05 6.34 6.34 0 00-6.34 6.34 6.34 6.34 0 006.34 6.34 6.34 6.34 0 006.33-6.34V8.69a8.18 8.18 0 004.78 1.52V6.76a4.85 4.85 0 01-1.01-.07z"/></svg>
-        TikTokをフォローする → @billionasset
-      </a>
+    <!-- タブ切り替え -->
+    <div style="display:flex; justify-content:center; gap:1rem; margin-bottom:2.5rem;">
+      <button onclick="showTab('tiktok')" id="tab-tk" style="padding:0.6rem 2rem; border:1px solid var(--gold); background:var(--gold); color:var(--navy); font-size:0.82rem; letter-spacing:0.08em; cursor:pointer; font-weight:600; transition:all 0.2s;">🎵 TikTok</button>
+      <button onclick="showTab('instagram')" id="tab-ig" style="padding:0.6rem 2rem; border:1px solid rgba(200,169,110,0.4); background:transparent; color:var(--gold); font-size:0.82rem; letter-spacing:0.08em; cursor:pointer; transition:all 0.2s;">📸 Instagram</button>
     </div>
+
+    <!-- Elfsight スクリプト -->
+    <script src="https://elfsightcdn.com/platform.js" async></script>
+
+    <!-- TikTok -->
+    <div id="sns-tiktok" style="display:block;">
+      <div class="elfsight-app-e1dbaa7e-7019-462a-8ed1-54d120bf0172" data-elfsight-app-lazy></div>
+      <div style="text-align:center; margin-top:1rem;">
+        <a href="https://www.tiktok.com/@billionasset" target="_blank" style="display:inline-flex; align-items:center; gap:0.5rem; border:1px solid rgba(200,169,110,0.4); color:var(--gold); padding:0.6rem 1.4rem; font-size:0.78rem; text-decoration:none; letter-spacing:0.08em;">
+          TikTokをフォローする → @billionasset
+        </a>
+      </div>
+    </div>
+
+    <!-- Instagram -->
+    <div id="sns-instagram" style="display:none;">
+      <div class="elfsight-app-e33fa2d5-826b-4ee0-a4ca-958f61dd0d7e" data-elfsight-app-lazy></div>
+      <div style="text-align:center; margin-top:1rem;">
+        <a href="https://www.instagram.com/billionasset.heyajuku" target="_blank" style="display:inline-flex; align-items:center; gap:0.5rem; border:1px solid rgba(200,169,110,0.4); color:var(--gold); padding:0.6rem 1.4rem; font-size:0.78rem; text-decoration:none; letter-spacing:0.08em;">
+          Instagramをフォローする → @billionasset.heyajuku
+        </a>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<script>
+function showTab(tab) {
+  document.getElementById('sns-tiktok').style.display = tab === 'tiktok' ? 'block' : 'none';
+  document.getElementById('sns-instagram').style.display = tab === 'instagram' ? 'block' : 'none';
+  document.getElementById('tab-tk').style.background = tab === 'tiktok' ? 'var(--gold)' : 'transparent';
+  document.getElementById('tab-tk').style.color = tab === 'tiktok' ? 'var(--navy)' : 'var(--gold)';
+  document.getElementById('tab-ig').style.background = tab === 'instagram' ? 'var(--gold)' : 'transparent';
+  document.getElementById('tab-ig').style.color = tab === 'instagram' ? 'var(--navy)' : 'var(--gold)';
+}
+</script>
 
 <section class="section contact" id="contact">
   <h2 class="contact-title">まずはお気軽にご相談ください</h2>
