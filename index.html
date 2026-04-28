@@ -310,57 +310,16 @@ footer { background: #080f17; padding: 2rem 5rem; display: flex; justify-content
     <h2 style="font-family:'Shippori Mincho',serif; font-size:clamp(1.6rem,3vw,2.4rem); color:var(--white); text-align:center; margin-bottom:0.8rem;">SNS をフォローする</h2>
     <p style="text-align:center; color:rgba(255,255,255,0.5); font-size:0.88rem; margin-bottom:3rem; letter-spacing:0.04em;">最新物件情報・お役立ち情報を毎日発信中</p>
 
-    <!-- タブ切り替え -->
-    <div style="display:flex; justify-content:center; gap:1rem; margin-bottom:2.5rem;">
-      <button onclick="showTab('instagram')" id="tab-ig" style="padding:0.6rem 2rem; border:1px solid var(--gold); background:var(--gold); color:var(--navy); font-size:0.82rem; letter-spacing:0.08em; cursor:pointer; font-weight:600; transition:all 0.2s;">📸 Instagram</button>
-      <button onclick="showTab('tiktok')" id="tab-tt" style="padding:0.6rem 2rem; border:1px solid rgba(200,169,110,0.4); background:transparent; color:var(--gold); font-size:0.82rem; letter-spacing:0.08em; cursor:pointer; transition:all 0.2s;">🎵 TikTok</button>
+    <!-- Elfsight TikTok Feed -->
+    <script src="https://elfsightcdn.com/platform.js" async></script>
+    <div class="elfsight-app-e1dbaa7e-7019-462a-8ed1-54d120bf0172" data-elfsight-app-lazy></div>
+
+    <div style="text-align:center; margin-top:2rem;">
+      <a href="https://www.tiktok.com/@billionasset" target="_blank" style="display:inline-flex; align-items:center; gap:0.6rem; border:1px solid rgba(200,169,110,0.4); color:var(--gold); padding:0.8rem 2rem; font-size:0.82rem; text-decoration:none; letter-spacing:0.08em; transition:all 0.2s;">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-2.88 2.5 2.89 2.89 0 01-2.89-2.89 2.89 2.89 0 012.89-2.89c.28 0 .54.04.79.1V9.01a6.33 6.33 0 00-.79-.05 6.34 6.34 0 00-6.34 6.34 6.34 6.34 0 006.34 6.34 6.34 6.34 0 006.33-6.34V8.69a8.18 8.18 0 004.78 1.52V6.76a4.85 4.85 0 01-1.01-.07z"/></svg>
+        TikTokをフォローする → @billionasset
+      </a>
     </div>
-
-    <!-- Instagram埋め込みエリア -->
-    <div id="sns-instagram" style="display:block;">
-      <!-- Elfsight Instagram Feed -->
-      <script src="https://elfsightcdn.com/platform.js" async></script>
-      <div class="elfsight-app-3c537e07-7de7-4eb1-a24c-a9ebb978ac19" data-elfsight-app-lazy></div>
-      <div style="text-align:center; margin-top:2rem;">
-        <a href="https://www.instagram.com/billionasset.heyajuku" target="_blank" style="display:inline-flex; align-items:center; gap:0.6rem; border:1px solid rgba(200,169,110,0.4); color:var(--gold); padding:0.8rem 2rem; font-size:0.82rem; text-decoration:none; letter-spacing:0.08em; transition:all 0.2s;">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
-          Instagramをフォローする → @billionasset.heyajuku
-        </a>
-      </div>
-    </div>
-
-    <!-- TikTok埋め込みエリア -->
-    <div id="sns-tiktok" style="display:none;">
-      <div style="display:flex; justify-content:center; flex-wrap:wrap; gap:1.5rem;">
-        <blockquote class="tiktok-embed" cite="https://www.tiktok.com/@billionasset" data-unique-id="billionasset" data-embed-type="creator" style="max-width:780px; min-width:288px;">
-          <section><a target="_blank" href="https://www.tiktok.com/@billionasset">@billionasset</a></section>
-        </blockquote>
-      </div>
-      <div style="text-align:center; margin-top:2rem;">
-        <a href="https://www.tiktok.com/@billionasset" target="_blank" style="display:inline-flex; align-items:center; gap:0.6rem; border:1px solid rgba(200,169,110,0.4); color:var(--gold); padding:0.8rem 2rem; font-size:0.82rem; text-decoration:none; letter-spacing:0.08em; transition:all 0.2s;">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-2.88 2.5 2.89 2.89 0 01-2.89-2.89 2.89 2.89 0 012.89-2.89c.28 0 .54.04.79.1V9.01a6.33 6.33 0 00-.79-.05 6.34 6.34 0 00-6.34 6.34 6.34 6.34 0 006.34 6.34 6.34 6.34 0 006.33-6.34V8.69a8.18 8.18 0 004.78 1.52V6.76a4.85 4.85 0 01-1.01-.07z"/></svg>
-          TikTokをフォローする → @billionasset
-        </a>
-      </div>
-    </div>
-  </div>
-</section>
-
-<script>
-function showTab(tab) {
-  document.getElementById('sns-instagram').style.display = tab === 'instagram' ? 'block' : 'none';
-  document.getElementById('sns-tiktok').style.display = tab === 'tiktok' ? 'block' : 'none';
-  document.getElementById('tab-ig').style.background = tab === 'instagram' ? 'var(--gold)' : 'transparent';
-  document.getElementById('tab-ig').style.color = tab === 'instagram' ? 'var(--navy)' : 'var(--gold)';
-  document.getElementById('tab-tt').style.background = tab === 'tiktok' ? 'var(--gold)' : 'transparent';
-  document.getElementById('tab-tt').style.color = tab === 'tiktok' ? 'var(--navy)' : 'var(--gold)';
-}
-</script>
-
-<!-- Instagram埋め込みスクリプト -->
-<script async src="//www.instagram.com/embed.js"></script>
-<!-- TikTok埋め込みスクリプト -->
-<script async src="https://www.tiktok.com/embed.js"></script>
 
 <section class="section contact" id="contact">
   <h2 class="contact-title">まずはお気軽にご相談ください</h2>
